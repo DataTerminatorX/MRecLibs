@@ -24,12 +24,20 @@ def cf_full(input_dict, dict_type, sim_type, form_type,  K, N):
         # rec_dict: dictionary,  <key: list(topK elements)>, 其中list的元素为: (key: similarity_score)
         # sim_list: list, (key1, key2, sim)
         # sim_dict: dictionary, <key: list>, 详见 sim_calculation.py->get_sim_dict()
+    
+    print ">>>> generating similarity matrix <<<<"
     sim_list = simc.get_sim_list(input_dict, dict_type, sim_type, form_type)
+    
+    print ">>>> generating topK similar neighbours <<<<"
     sim_dict = simc.get_sim_dict(sim_list , K )
     
     # 以下根据公式 score(ui,vj) = Σ sim(ui, uk)*1(uk,vj) /Σ sim(ui, uk), uk ∈ {ui的topK 邻居}
     rec_dict={}
+    idx = 0
     for key, l in sim_dict.iteritems(): 
+        idx += 1
+        if idx%100==0:
+            print ">>>> processing the "+idx+"th user/item recommendation <<<<"
         rec_dict.setdefault(key)
         d = {}
         sum_sim=0
