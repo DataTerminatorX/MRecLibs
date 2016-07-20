@@ -37,7 +37,7 @@ def cf_full(input_dict, dict_type, sim_type, form_type,  K, N):
     for key, l in sim_dict.iteritems(): 
         idx += 1
         if idx%100==0:
-            print ">>>> processing the "+idx+"th user/item recommendation <<<<"
+            print ">>>> processing the "+str(idx)+"th user/item recommendation <<<<"
         rec_dict.setdefault(key)
         d = {}
         sum_sim=0
