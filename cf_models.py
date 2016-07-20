@@ -16,7 +16,8 @@ def cf_full(input_dict, dict_type, sim_type, form_type,  K, N):
         #               若 dict_type = 1, 则输入是 uidict或iudict, 且 <key: set(...)>
         # dict_type: 0|1 , 对应上面不同input_dict 类型
         # sim_type: string, "jaccard"/"cos"/"pearson" (详见 sim_calculation.py->get_sim_list() )
-        # form_type: string, 对于jaccard距离: "init": 原始jaccard( |a ∩ b| / |a ∪ b| )  ;   "cos": 余弦jaccard( |a ∩ b|/ sqrt(|a|*|b|) )
+        # form_type: string, 对于jaccard距离: "init": 原始jaccard( |a ∩ b| / |a ∪ b| )  
+        #                                                       "cos": 余弦jaccard( |a ∩ b|/ sqrt(|a|*|b|) )
         # K: int, 选取 K 个邻居用于推荐, 需要全部邻居可设置为 float("inf") 
         # N: int, 最后推荐结果中截取前N个, 需要全部结果可设置为 float("inf")
     # 输出: 
