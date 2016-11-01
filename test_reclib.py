@@ -1,4 +1,5 @@
 ﻿#=== test "sim_calculation.py" module ====
+
 import sim_calculation as simc
 
 d = {1:[1,2,2,3,3], 2:[1,1,4], 3: [1,3,4,6,6], 4:[5]}
@@ -10,8 +11,23 @@ sim_list = simc.get_sim_list(d1, 1, "jaccard", "init")
 sim_dict = simc.get_sim_dict(sim_list , float("inf") )
 # print sim_dict
 
+# ==convert sim_list to ndarray X with shape(n_samples, n_samples)==
+
+# import numpy as np
+# import scipy as sp
+# keys = sim_dict.keys()
+# X = np.zeros((len(keys),len(keys)) )
+# for e in sim_list:
+    # if e[2] <> 0:
+        # i = keys.index(e[0])
+        # j = keys.index(e[1])
+        # X[i,j]= e[2]
+        # X[j,i]= e[2]
+# sX = sp.csr_matrix(X) # convert to row sparse matrix if needed
+
 
 #=== test "cf_models.py" module ====
+
 import cf_models as cf
 rec_dict,_,_ = cf.cf_full(d,0, "jaccard", "init", float("inf") , float("inf"))
 print rec_dict
