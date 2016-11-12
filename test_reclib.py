@@ -1,15 +1,21 @@
 ﻿#=== test "sim_calculation.py" module ====
 
-import sim_calculation as simc
+from sim_calculation import SimCalculation as SimC
+from cf_models import CF
+from ConfigParser import SafeConfigParser
+
 
 d = {1:[1,2,2,3,3], 2:[1,1,4], 3: [1,3,4,6,6], 4:[5]}
 d1 = {key: set(value) for key,value in d.iteritems()}
 # print  simc.get_sim_list(d, 0, "jaccard", "init")
 # print  simc.get_sim_list(d, 0, "jaccard", "init")
 
-sim_list = simc.get_sim_list(d1, 1, "jaccard", "init")
-sim_dict = simc.get_sim_dict(sim_list , float("inf") )
-# print sim_dict
+# simc = SimC(d1)
+# s1 = simc.get_sim_list()
+# s2 = simc.get_sim_dict()
+# print s1
+# print s2
+
 
 # ==convert sim_list to ndarray X with shape(n_samples, n_samples)==
 
@@ -28,13 +34,18 @@ sim_dict = simc.get_sim_dict(sim_list , float("inf") )
 
 #=== test "cf_models.py" module ====
 
-import cf_models as cf
-rec_dict,_,_ = cf.cf_full(d,0, "jaccard", "init", float("inf") , float("inf"))
-print rec_dict
+# import cf_models as cf
+# rec_dict,_,_ = cf.cf_full(d,0, "jaccard", "init", float("inf") , float("inf"))
+# print rec_dict
+
 # K=float("inf")
 # N=float("inf")
 # sim_list = simc.get_sim_list(d, 0, "jaccard", "init")
 # sim_dict = simc.get_sim_dict(sim_list , float("inf"))
+
+ucf = CF('user', d1)
+ucf.train_predict()
+print ucf.get_rec_filter()
 
 # rec_dict={}
 # for key, l in sim_dict.iteritems(): 
