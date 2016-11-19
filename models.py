@@ -92,6 +92,7 @@ class CF():
                 self.rec_dict[key] = sorted(d.iteritems(), key = operator.itemgetter(1),reverse = True)
             
             if self.model_type=='item':
+                # 需要让用户选择输出是 'item' 维度还是 'user' 维度，默认'user'
                 pass
 
 
@@ -103,7 +104,7 @@ class CF():
         return {key:value[0:min(len(value),N)] for key,value in self.rec_dict.iteritems()}
 
     def get_rec_filter(self):
-        # 功能: 在 cf_full 的结果上，分别获取 (推荐集合 U 原有集合) 和 (推荐集合 - 原有集合)
+        # 功能: 在 get_rec() 的结果上，分别获取 (推荐集合 U 原有集合) 和 (推荐集合 - 原有集合)
         tmp = {}
         for key,value in self.rec_dict.iteritems():
             buylist = self.input_dict[key]

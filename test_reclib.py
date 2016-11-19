@@ -1,11 +1,12 @@
 ﻿#=== test "sim_calculation.py" module ====
 
 from sim_calculation import SimCalculation as SimC
-from cf_models import CF
+from models import CF
 from ConfigParser import SafeConfigParser
+import logging
 
 
-d = {1:[1,2,2,3,3], 2:[1,1,4], 3: [1,3,4,6,6], 4:[5]}
+d = {'a':[1,2,2,3,3], 2:[1,1,4], 3: [1,3,4,6], 4:[5]}
 d1 = {key: set(value) for key,value in d.iteritems()}
 # print  simc.get_sim_list(d, 0, "jaccard", "init")
 # print  simc.get_sim_list(d, 0, "jaccard", "init")
@@ -46,6 +47,7 @@ d1 = {key: set(value) for key,value in d.iteritems()}
 ucf = CF('user', d1)
 ucf.train_predict()
 print ucf.get_rec_filter()
+
 
 # rec_dict={}
 # for key, l in sim_dict.iteritems(): 

@@ -15,6 +15,7 @@
 '''
 
 import math,operator,copy
+import itertools as it
 
 class SimCalculation():
 
@@ -109,16 +110,22 @@ class SimCalculation():
 
         if self.__sim_list is None:
             self.__sim_list = []
-            input_dict = copy.deepcopy(self.input_dict) # 先进行深拷贝, 因为下面会修改 input_dict
             sim_type_dict = {"jaccard":self._jaccard_formula, "cos": self._cos_formula, "pearson": self._pearson_formula}
-            for key1, value1 in input_dict.items():
-                for key2,value2 in input_dict.iteritems():
-                    if key1 == key2:          
-                        continue
-                    self.__sim_list.append( (key1, key2, sim_type_dict[self.sim_type](value2,value1,self.form_type) ) )
-                input_dict.pop(key1) # 从input_dict中去掉key1，以免后面重复计算其他key和key1的相似度
+
+            # 这段代码作废，用下面 combinations 高效实现
+            # input_dict = copy.deepcopy(self.input_dict) # 先进行深拷贝, 因为下面会修改 input_dict
+            # for key1, value1 in input_dict.items():
+            #     for key2,value2 in input_dict.iteritems():
+            #         if key1 == key2:          
+            #             continue
+            #         self.__sim_list.append( (key1, key2, sim_type_dict[self.sim_type](value2,value1,self.form_type) ) )
+            #     input_dict.pop(key1) # 从input_dict中去掉key1，以免后面重复计算其他key和key1的相似度
+
+            for (key1,value1), (key2,value2) in it.combinations(self.input_dict.iteritems(), 2):
+                self.__sim_list.append( (key1, key2, sim_type_dict[self.sim_type](value2,value1,self.form_type) ) )
 
         return copy.deepcopy(self.__sim_list)
+        # return self.__sim_list
 
     # def get_sim_dict ( sim_list, K ):
     def get_sim_dict ( self):
@@ -145,6 +152,7 @@ class SimCalculation():
                 self.__sim_dict[e[0]] = e[1][0:min(len(e[1]), self.K)]
 
         return copy.deepcopy(self.__sim_dict)
+        # return self.__sim_dict
             
             
 
