@@ -22,6 +22,8 @@ Only have train and predict mode.
     1. Train: Tune parameter D (D is dimension of features), extract features for users and items from **trainX**, calculate similarities, do recommendation, evaluate on **trainY**
     2. Predict: Re-extract features for users and items from **predictX**, calculate similarities, do recommendation
 
+* SL (Sequence Learning)
+
 ### Matrix factorization models
 Only have train and predict mode
 \--------data set--------
