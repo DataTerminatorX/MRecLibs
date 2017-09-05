@@ -6,4 +6,3 @@ class DataSwitch():
 
     def df2dict():
         pass
-    def df2

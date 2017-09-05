@@ -4,6 +4,7 @@ from sim_calculation import SimCalculation as SimC
 from models import CF
 from ConfigParser import SafeConfigParser
 import logging
+import unittest # unused
 
 
 d = {'a':[1,2,2,3,3], 2:[1,1,4], 3: [1,3,4,6], 4:[5]}

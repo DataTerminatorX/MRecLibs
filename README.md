@@ -1,22 +1,42 @@
-# ABOUT
+# About
 
-This project aims at implementing different models for recommender system, regardless of running speed and performance.
+This project aims at implementing different models for recommender system, regardless of running speed and performance. Still under construction.
 
-Still under construction.
 
-# INSTALL
+# Usage
 
-# USAGE
+See examples in `test_reclib.py`
 
-# MISC
-## Pipeline of Different Models
-> Tips: Memory based models and matrix factorization models evaluate results on trainY while classification models evaluate on testY. Because the latter contain information of trainY when do modeling, the former don't.
+# Models
 
-### Memory based models 
-Only have train and predict mode.
+> Tips: 
+
+> 1. Memory based models and matrix factorization models evaluate results on trainY while classification models evaluate on testY. Because the latter contain information of trainY when do modeling, the former don't.
+
+> 2. Usually, sequence models split dataset into train/test/predict by samples while others by time.
+
+* [x] Memory based Models 
+    * [ ] User/Item CF models (with different similarity mearsurements)
+    * [ ] Content based models
+* [ ] Matrix Factorization models
+    * [ ] Vanilla SVD
+    * [ ] SVD++
+* [ ] Classfication Models
+    * [ ] Naive Bayes
+    * [ ] 
+* [ ] Sequence Models
+    * [ ] N-gram
+    * [ ] LSTM
+    * [ ] Time-aware LSTM
+
+
+## Memory based Models 
+Split dataset by time. Have `train` and `predict` mode.
 
 \--------data set--------
+
 |\-- trainX \--|\-- trainY \--|
+
 　　　|\--- predictX \----|
 
 * CF (Collaborative Filtering)
@@ -27,25 +47,30 @@ Only have train and predict mode.
     1. Train: Tune parameter D (D is dimension of features), extract features for users and items from **trainX**, calculate similarities, do recommendation, evaluate on **trainY**
     2. Predict: Re-extract features for users and items from **predictX**, calculate similarities, do recommendation
 
-* SL (Sequence Learning)
-
-### Matrix factorization models
-Only have train and predict mode
+## Matrix Factorization Models
+Split dataset by time. Have `train` and `predict` mode
 
 \--------data set--------
+
 |\-- trainX \--|\-- trainY \--|
+
 　　　|\--- predictX \----|
+
+* Vanilla SVD
 
 * SVD++
     1. Train: Tune parameter D (D is dimension of latent features), learn latent features for users and items on **trainX**, evaluate on **trainY**, find best D
     2. Predict: Fix best D, learn latent features for users and items on **predictX**, do recommendation
 
-### Classfication models
-Have train, test and predict mode.
+## Classfication Models
+Split dataset by time. Have `train`, `test` and `predict` mode.
 
 \--------data set----------------
+
 |\-- trainX \--|\-- trainY \--|
+
 　　　　|\-- testX \--|\-- testY \--|
+
 　　　　　　　　|\-- predictX\-|
 
 * NB (Naive Bayes)
@@ -59,5 +84,23 @@ Have train, test and predict mode.
     3. Predict: Re-extract features on **predictX**, fix best e and C, do classification
 
 * XgBoost
+
+## Sequence Models
+Split dataset by samples. Have `train`, `test` and `predict` mode.
+
+\--------data set----------------
+
+|\-- train(seqX,seqY) \--|
+
+|\-- test(seqX,seqY) \--|
+
+|\-- predict(seqX)\-|
+
+* N-gram
+
+* LSTM
+
+* Time-aware LSTM
+
 
  
