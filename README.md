@@ -16,18 +16,23 @@ See examples in `test_reclib.py`
 > 2. Usually, sequence models split dataset into train/test/predict by samples while others by time.
 
 * [x] Memory based Models 
-    * [ ] User/Item CF models (with different similarity mearsurements)
+    * [x] User/Item CF models (with different similarity mearsurements)
     * [ ] Content based models
 * [ ] Matrix Factorization models
     * [ ] Vanilla SVD
     * [ ] SVD++
 * [ ] Classfication Models
     * [ ] Naive Bayes
-    * [ ] 
+    * [ ] Logistic Regression
+    * [ ] GBDT
 * [ ] Sequence Models
     * [ ] N-gram
     * [ ] LSTM
     * [ ] Time-aware LSTM
+* [ ] Ensemble Models
+    * [ ] Bagging
+    * [ ] AdaBoost
+    * [ ] Stacking
 
 
 ## Memory based Models 
