@@ -1,5 +1,9 @@
 # ABOUT
 
+This project aims at implementing different models for recommender system, regardless of running speed and performance.
+
+Still under construction.
+
 # INSTALL
 
 # USAGE
@@ -10,6 +14,7 @@
 
 ### Memory based models 
 Only have train and predict mode.
+
 \--------data set--------
 |\-- trainX \--|\-- trainY \--|
 　　　|\--- predictX \----|
@@ -26,6 +31,7 @@ Only have train and predict mode.
 
 ### Matrix factorization models
 Only have train and predict mode
+
 \--------data set--------
 |\-- trainX \--|\-- trainY \--|
 　　　|\--- predictX \----|
@@ -36,6 +42,7 @@ Only have train and predict mode
 
 ### Classfication models
 Have train, test and predict mode.
+
 \--------data set----------------
 |\-- trainX \--|\-- trainY \--|
 　　　　|\-- testX \--|\-- testY \--|
